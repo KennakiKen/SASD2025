@@ -35,6 +35,10 @@ namespace Refactoring101
             string name = "Mr.Harry Potter";
             string name2 = "Ms.Mary Poppin";
             string name3 = "Mr.Johny Black";
+
+            PrintName(name);
+            PrintName(name2);
+            PrintName(name3);
         }
             private void PrintName(string name)
             {
