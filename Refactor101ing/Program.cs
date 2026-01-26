@@ -8,7 +8,7 @@ namespace Refactor101ing
         {
             Console.WriteLine("Hello, World!");
 
-            new QuestionsAndAnswers().Print();
+            new StudentCount().Run();
         }
     }
 }

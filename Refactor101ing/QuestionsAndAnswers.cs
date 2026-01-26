@@ -18,62 +18,72 @@ namespace Refactoring101
         // 2. Duplicate Code
         public void Print()
         {
-            //Console.WriteLine("***********************");
-            //Console.WriteLine("   Mr.Harry Potter");
-            //Console.WriteLine("***********************");
-            //Console.WriteLine();
-
-            //Console.WriteLine("***********************");
-            //Console.WriteLine("   Ms.Mary Poppin");
-            //Console.WriteLine("***********************");
-            //Console.WriteLine();
-
-            //Console.WriteLine("***********************");
-            //Console.WriteLine("   Mr.Johny Black");
-            //Console.WriteLine("***********************");
-            //Console.WriteLine();
-            string name = "Mr.Harry Potter";
-            string name2 = "Ms.Mary Poppin";
-            string name3 = "Mr.Johny Black";
-
-            PrintName(name);
-            PrintName(name2);
-            PrintName(name3);
+            PrintName("Mr.Harry Potter");
+            PrintName("Ms.Mary Poppin");
+            PrintName("Mr.Johny Black");
         }
-            private void PrintName(string name)
-            {
-                Console.WriteLine("***********************");
-                Console.WriteLine("   " + name);
-                Console.WriteLine("***********************");
-                Console.WriteLine();
-            }
 
+        private void PrintName(string name)
+        {
+            Console.WriteLine("***********************");
+            Console.WriteLine("   " + name);
+            Console.WriteLine("***********************");
+            Console.WriteLine();
+        }
     }
 
         // 3. Shotgun Surgery
+        public class StudentCount
+        {
+            public const int Count = 48;
+        }
+
         public class Shotgun1
         {
             public void DisplayStudents()
             {
-                Console.WriteLine("Student Count = " + 48);
+                Console.WriteLine("Student Count = " + StudentCount.Count);
             }
         }
+
         public class Shotgun2
         {
             public void PrintTotal()
             {
-                Console.WriteLine("Total Students : " + 48);
+                Console.WriteLine("Total Students : " + StudentCount.Count);
             }
-        
+        }
 
         // 4. Data Clump
-        public void PrintDate(int day, int month, int year)
+        public class Date
         {
-            Console.WriteLine($"{day:00}/{month:00}/{year:0000}");
-        }
+            public int Day { get; set; }
+            public int Month { get; set; }
+            public int Year { get; set; }
+
+            // Feature Envy: ย้าย logic มาไว้ที่ Date
+            public string Format()
+            {
+                return $"{Day:00}/{Month:00}/{Year:0000}";
+            }
+
+
+
         // 5. Feature Envy
         //     จากข้อที่แล้ว น่าจะได้สร้างคลาส Date ขึ้นมา
         //     ในคลาส Date นั้นให้สร้าง method: public string Format()
         //      ปรับให้ PrintDate(...) ของเดิม ไปเรียก date.Format() ดังกล่าว
+        public class Date
+        {
+            public int Day { get; set; }
+            public int Month { get; set; }
+            public int Year { get; set; }
+
+            public string Format()
+            {
+                return $"{Day:00}/{Month:00}/{Year:0000}";
+            }
+        }
+
     }
 }
